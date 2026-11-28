@@ -1,6 +1,20 @@
-<script>
+
   const container = document.querySelector('.items');
   const cubes = document.querySelectorAll('.item');
+
+  // 1. Initial Grid Setup: Container ko grid layout dein taaki cubes single row ke bajay grid mein dikhein
+  container.style.display = 'grid';
+  container.style.gridTemplateColumns = 'repeat(5, 1fr)';
+  container.style.gap = '10px';
+  container.style.whiteSpace = 'normal';
+  container.style.overflow = 'hidden';
+  container.style.padding = '20px';
+
+  cubes.forEach((cube) => {
+    cube.style.width = 'auto';
+    cube.style.height = 'auto';
+    cube.style.transform = 'none';
+  });
 
   let activeCube = null;
   let offsetX = 0;
@@ -13,11 +27,15 @@
     const coords = Array.from(cubes).map((cube) => ({
       left: cube.offsetLeft,
       top: cube.offsetTop,
+      width: cube.offsetWidth,
+      height: cube.offsetHeight,
     }));
 
     cubes.forEach((cube, index) => {
       cube.style.position = 'absolute';
       cube.style.margin = '0';
+      cube.style.width = `${coords[index].width}px`;
+      cube.style.height = `${coords[index].height}px`;
       cube.style.left = `${coords[index].left}px`;
       cube.style.top = `${coords[index].top}px`;
     });
@@ -63,4 +81,4 @@
     activeCube.classList.remove('active');
     activeCube = null;
   });
-</script>
+
