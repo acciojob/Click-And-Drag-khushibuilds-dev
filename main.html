@@ -68,6 +68,8 @@
       height: cube.offsetHeight,
     }));
 
+	  container.style.display = 'block'; 
+
     cubes.forEach((cube, index) => {
       cube.style.position = 'absolute';
       cube.style.margin = '0';
@@ -78,7 +80,7 @@
     });
   }
 
-  // Page load hote hi turant initial grid positions lock karein
+  
   lockInitialPositions();
 
   cubes.forEach((cube) => {
